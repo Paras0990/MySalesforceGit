@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="LWC File Uplaoder">
+     <lightning-file-upload
+        label="Attach files"
+        name="fileUploader"
+        accept={acceptedFormats}
+        record-id={myRecordId}
+        onuploadfinished={handleUploadFinished}
+        multiple
+    >
+    </lightning-file-upload>
+    <lightning-card title="Uploaded Files">
+
+        <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                hide-checkbox-column>
+        </lightning-datatable>
+        </div>
+
+    </lightning-card>
+
+   </lightning-card> 
+
+</template>
