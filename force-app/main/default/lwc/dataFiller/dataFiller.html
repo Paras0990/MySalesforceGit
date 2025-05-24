@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Add new row in Lightning Datable from another Lightning Web Component on Button Click">
+    <div class="slds-p-around_medium lgc-bg">
+            <lightning-input name="name" type="text" label="Enter Name" value={name} onchange={handleChange}> </lightning-input>
+            <lightning-input name="phone" type="text" label="Enter Phone" value={phone} onchange={handleChange}></lightning-input>
+            <lightning-input name="country" type="text" label="Enter Country" value={country} onchange={handleChange}></lightning-input>
+        </div>
+     <lightning-button variant="brand" label="Pass Data" title="Pass Data" onclick={handlePassData} class="slds-m-left_x-small"></lightning-button>
+    
+    </lightning-card>
+   
+    <c-person-table row-parent={rows}></c-person-table>
+   
+
+
+</template>
