@@ -1,0 +1,89 @@
+<template>
+   <!-- <lightning-card title="Case Hierarchy Without DataTable">
+        <template lwc:if={cases}>
+           <template for:each={cases} for:item="cs">
+                <table>
+                   <tr>
+                        <th>Case Number</th>
+                        <th>Subject</th>
+                        <th>Origin</th>
+                    </tr>
+                <table>
+                <table key={cs.Id} class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <tr>
+                        <th>Case Number</th>
+                        <th>Subject</th>
+                        <th>Origin</th>
+                    </tr>
+                    <tr>
+                        <td>{cs.CaseNumber}</td>
+                        <td>{cs.Subject}</td>
+                        <td>{cs.Origin}</td>
+                    </tr>
+                </table>
+            </template>
+        </template>
+    </lightning-card>
+    -->
+<lightning-card title="Child Case Hierarchy">
+<table class="slds-table slds-table_cell-buffer slds-table_bordered " >
+<thead>
+<tr class="slds-line-height_reset ">
+<th class="slds-text-title_bold" scope="col">
+<div class="slds-truncate slds-text-title_bold" title="Case Number">Case Number</div>
+</th>
+<th class="" scope="col">
+<div class="slds-truncate slds-text-title_bold" title="Subject">Subject</div>
+</th>
+<th class="" scope="col">
+<div class="slds-truncate slds-text-title_bold" title="Origin">Origin</div>
+</th>
+<th class="" scope="col">
+<div class="slds-truncate slds-text-title_bold" title="Expand/Collapse child">Hide/Show Child</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<template for:each={cases} for:item="cs">
+
+<tr key={cs.Id} class="slds-hint-parent ">
+<th data-label="Case Number" scope="row">
+<div class="slds-truncate" title="Case Number">
+<a href="#" data-id={cs.Id} onclick={handleCaseClick} tabindex="-1">{cs.CaseNumber}</a>
+</div>
+</th>
+<td data-label="Subject">
+<div class="slds-truncate" title="Subject">{cs.Subject}</div>
+</td>
+<td data-label="Origin">
+<div class="slds-truncate" title="Origin">{cs.Origin}</div>
+</td>
+<td data-label="Expand/collapse">
+<div class="slds-truncate " title="Expand/collapse">
+<lightning-icon icon-name="utility:add"  class="slds-m-left_small" size="x-small" data-id={cs.Id} title="Expand" onclick={expandHandler}></lightning-icon>
+<lightning-icon icon-name="utility:close" class="slds-m-left_small" size="x-small" data-id={cs.Id}  title="Collapse" onclick={collapseHandler}></lightning-icon>
+    
+</div>
+</td>
+</tr>
+ <template if:true={cs.childCases}>
+                    <template for:each={cs.childCases} for:item="child">
+                        <tr key={child.Id} class="slds-text-color_weak">
+                            <td><div class="slds-truncate" title="Case Number">
+                            <lightning-icon icon-name="utility:macros" alternative-text="Child case" size="x-small" class="slds-m-left_xx-small" title="Child Case"></lightning-icon>
+                            <a href="#" data-id={child.Id}  onclick={handleChildCaseClick} tabindex="-1"> {child.CaseNumber}</a></div>
+                            </td>
+                            <td>{child.Subject}</td>
+                            <td>{child.Origin}</td>
+                            <td></td>
+                        </tr>
+    </template>
+ </template>
+
+</template>
+
+</tbody>
+</table>
+</lightning-card>
+
+</template>
