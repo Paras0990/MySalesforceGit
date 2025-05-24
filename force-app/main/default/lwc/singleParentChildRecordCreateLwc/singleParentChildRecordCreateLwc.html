@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Single LWC to Create Account and Related Contact">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input name="accName" type="text" label="Account Name" value={accName} placeholder="Enter Account Name..." required onchange={handleChange}></lightning-input>
+            <lightning-input name="accWebsite" type="url" label="Account Website" value={accWebsite} placeholder="Enter Account Website..." onchange={handleChange}></lightning-input>
+            <lightning-input name="conFirstname" type="text" label="Contact FirstName" value={conFirstname} placeholder="Enter Contact FirstName..." onchange={handleChange}></lightning-input>
+            <lightning-input name="conLastname" type="text" label="Contact LastName" value={conLastname} placeholder="Enter Contact LastName..." required onchange={handleChange}></lightning-input>
+            <lightning-input name="conEmail" type="email" label="Contact Email" value={conEmail} placeholder="Enter Contact Email..." onchange={handleChange}></lightning-input>
+            <lightning-input name="conPhone" type="tel" label="Contact Phone" value={conPhone} placeholder="Enter Contact Phone..." onchange={handleChange}></lightning-input>
+            <lightning-input type="file"
+                label="Attachment"
+                accept="image/png, .zip"
+                onchange={handleFilesChange}
+                multiple
+            >
+            </lightning-input>
+        </div>
+
+         <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <lightning-button-group>
+            <lightning-button name="Save" label="Save" icon-name="utility:save" onclick={handleSave}></lightning-button>
+            <lightning-button name="Save&New" label="Save & New" onclick={handleSaveNew}></lightning-button>
+            <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+        </lightning-button-group>
+         </div>
+
+    </lightning-card>
+
+
+</template>
