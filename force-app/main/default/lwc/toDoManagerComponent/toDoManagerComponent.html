@@ -1,0 +1,101 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+          <span><lightning-card  title="Add New Task">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text"
+                 label="Enter Task"
+                 required="true"
+                 message-when-value-missing="Please Enter Task Details"
+                 onchange={taskChangeHandler}
+                 value={taskName}
+                 class="taskname">
+                </lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="date"
+                 name="input1" label="Set End date"
+                 field-level-help="Default End Date is Today's Date"
+                 onchange={dateChangeHandler} 
+                 value={endDate}
+                ></lightning-input>
+            </div>
+            <div class="slds-p-around_medium slds-grid slds-grid_align-center lgc-bg">
+            <lightning-button variant="brand"
+             label="Reset"
+             onclick={handleReset}
+             class="slds-m-left_x-small"
+             >
+            </lightning-button>
+            <lightning-button variant="brand"
+             label="Add Task"
+             onclick={handleAddTask}
+             class="slds-m-left_x-small"
+             
+            ></lightning-button>
+                
+            </div>
+           
+           </lightning-card>
+          </span>
+        </div>
+        <div class="slds-col">
+          <span><lightning-card  title="To Do List">
+            <template for:each={incompletedtask} for:item="task" for:index="index">
+                <div class="slds-box slds-theme_shade slds-theme_alt-inverse " key={task.taskName}>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_8-of-12">
+                            <ul> {task.taskName}  </ul>
+                            <ul>{task.endDate}</ul>
+                          </div>
+                          <div class="slds-col slds-size_4-of-12">
+                            <span><lightning-icon 
+                              class="slds-m-right_x-small  "
+                              icon-name="action:delete" 
+                              size="xx-small" 
+                              title="large size"
+                              variant="inverse"
+                              onclick={handleDeleteTask}
+                              name={index}
+                            ></lightning-icon>
+
+                            <lightning-icon 
+                              
+                              icon-name="action:approval" 
+                              size="xx-small" 
+                              title="large size"
+                              variant="inverse"
+                              onclick={handleCompleteTask}
+                              name={index}
+                              >
+                            </lightning-icon>
+                            
+                          </span>
+                          </div>
+                    </div>
+
+                  </div> 
+               
+            </template>
+           
+          </lightning-card></span>
+        </div>
+        <div class="slds-col">
+          <span><lightning-card  title="Completed Tasks">
+            <template for:each={completedtask} for:item="currenttask" for:index="index">
+                <div class="slds-box slds-theme_shade slds-theme_success " 
+                key={currenttask.taskName}>
+                    <div class="slds-grid slds-wrap" >
+                        <div class="slds-col slds-size_8-of-12">
+                            <ul> {currenttask.taskName}  </ul>
+                            <ul>{currenttask.endDate}</ul>
+                        </div>
+                    </div>
+                </div>
+            </template>
+           
+          </lightning-card></span>
+        </div>
+      </div>
+    
+</template>
