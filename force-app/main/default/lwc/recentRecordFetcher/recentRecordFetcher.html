@@ -1,0 +1,67 @@
+<template>
+   <lightning-card title="Available Objects">
+   <lightning-combobox
+            name="object"
+            label="Object"
+            value={value}
+            placeholder="Select an Object"
+            options={result}
+            onchange={handleChange} ></lightning-combobox>
+ </lightning-card>
+ <template if:true={objSelected}>
+   <lightning-card title="Fields of Selected Object" >
+       
+<!-- <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+<thead>
+<tr class="slds-line-height_reset">
+<th class="" scope="col">
+<div class="slds-truncate" title="Field Label">Field Label</div>
+</th>
+<th class="" scope="col">
+<div class="slds-truncate" title="API Name">API Name</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<template for:each={fields} for:item="field">
+<tr key={field.Label} class="slds-hint-parent">
+<th data-label="Field Label" scope="row">
+<div class="slds-truncate" title="Field Label" onclick={handleFieldClick}>
+{field.Label}
+</div>
+</th>
+<td data-label="API Name">
+<div class="slds-truncate" title="API Name">{field.QualifiedApiName}</div>
+</td>
+</tr>
+</template>
+</tbody>
+</table> -->
+
+<div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={fields}
+                columns={columns}
+                onrowselection={getSelectedName}>
+        </lightning-datatable>
+    </div>
+    <div class="slds-m-top_small slds-m-bottom_medium"><lightning-button variant="brand" label="Query" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        </div>
+   </lightning-card>
+ </template>
+ <template if:true={recordsFound}>
+ <lightning-card title="Recent Records">
+        <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={getQuery}
+                columns={recordsColumns}
+                 hide-checkbox-column>
+        </lightning-datatable>
+    </div>
+
+ </lightning-card>
+ </template>
+
+</template>
