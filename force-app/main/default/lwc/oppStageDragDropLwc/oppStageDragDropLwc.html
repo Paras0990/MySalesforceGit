@@ -1,0 +1,59 @@
+<template>
+     <lightning-layout>
+      <lightning-layout-item size="4" padding="around-small">
+        <lightning-card title="All Prospecting Opportunities" >
+                <div class="slds-p-around_small" data-stage="Prospecting" ondragover={handleDragOver} ondrop={handleDrop}>
+                    <!-- Search input filters the 'All' list -->
+                    <lightning-input class="searchInput"
+                                     type="text"
+                                     placeholder="Search Opportunities..."
+                                     value={searchTerm}
+                                     onchange={handleSearch}>
+                    </lightning-input>
+                    <!-- List of prospecting Opportunities -->
+                    <ul>
+                        <template for:each={prospectingOpps} for:item="opp">
+                            <li key={opp.Id} data-id={opp.Id} draggable="true" 
+                                ondragstart={handleDragStart} 
+                                class="slds-box slds-m-around_x-small">
+                                {opp.Name}
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+        </lightning-card>
+      </lightning-layout-item>
+      <lightning-layout-item size="4" padding="around-small">
+        <lightning-card title="Closed-Won">
+            <div class="slds-p-around_small" data-stage="Closed-Won" ondragover={handleDragOver} ondrop={handleDrop}>
+                    <ul>
+                        <template for:each={wonOpps} for:item="opp">
+                            <li key={opp.Id} data-id={opp.Id} draggable="true" 
+                                ondragstart={handleDragStart} 
+                                class="slds-box slds-m-around_x-small">
+                                {opp.Name}
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+        </lightning-card>
+      </lightning-layout-item>
+      <lightning-layout-item size="4" padding="around-small">
+        <lightning-card title="Closed-Lost">
+            <div class="slds-p-around_small" data-stage="Closed-Lost" ondragover={handleDragOver} ondrop={handleDrop}>
+                    <ul>
+                        <template for:each={lostOpps} for:item="opp">
+                            <li key={opp.Id} data-id={opp.Id} draggable="true" 
+                                ondragstart={handleDragStart} 
+                                class="slds-box slds-m-around_x-small">
+                                {opp.Name}
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+        </lightning-card> 
+      </lightning-layout-item>
+     </lightning-layout>
+    
+
+</template>
