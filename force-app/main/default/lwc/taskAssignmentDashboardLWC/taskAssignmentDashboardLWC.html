@@ -1,9 +1,11 @@
 <template>
     
     <lightning-card title="Task Assignment Dashboard" icon-name="standard:task">
+        <template if:true={closeFlag}>
         <div class="close-button">
          <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close" title="Close" onclick={closeHandler}></lightning-button-icon>
          </div>
+        </template>
         <ul class="slds-has-dividers_bottom slds-has-block-links_space ">
         <li class="slds-item slds-text-heading_medium ">
         <h1  class="slds-item slds-p-bottom_small slds-m-top_medium slds-m-bottom_medium" onclick={highExpandHandler}>High({highLength})</h1>

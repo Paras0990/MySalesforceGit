@@ -27,6 +27,15 @@ export default class TaskAssignmentDashboardLWC extends LightningElement {
     @track finalTaskGroup;
 
     users;
+    closeFlag;
+
+    closeFlagger(){
+        if(this.highClick==false && this.medClick==false && this.lowClick==false){
+            this.closeFlag=false;
+        }else if(this.highClick==true || this.medClick==true || this.lowClick==true){
+            this.closeFlag=true;
+        }
+    }
 
     @wire(getOpenTasks)
     wiredTasks(result){
@@ -89,6 +98,8 @@ export default class TaskAssignmentDashboardLWC extends LightningElement {
         this.highClick=true;
         this.medClick=false;
         this.lowClick=false;
+
+        this.closeFlagger();
     }
 
    medExpandHandler(){
@@ -96,6 +107,8 @@ export default class TaskAssignmentDashboardLWC extends LightningElement {
         this.medClick=true;
         this.highClick=false;
         this.lowClick=false;
+
+        this.closeFlagger();
     }
 
     lowExpandHandler(){
@@ -103,6 +116,8 @@ export default class TaskAssignmentDashboardLWC extends LightningElement {
         this.lowClick=true;
         this.highClick=false;
         this.medClick=false;
+
+        this.closeFlagger();
     }
 
     async handleChange(event){
@@ -139,6 +154,8 @@ export default class TaskAssignmentDashboardLWC extends LightningElement {
         this.highClick=false;
         this.medClick=false;
         this.lowClick=false;
+
+        this.closeFlagger();
     }
 
 
