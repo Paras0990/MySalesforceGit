@@ -1,0 +1,104 @@
+<template>
+    
+    <lightning-card title="Task Assignment Dashboard" icon-name="standard:task">
+        <div class="close-button">
+         <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close" title="Close" onclick={closeHandler}></lightning-button-icon>
+         </div>
+        <ul class="slds-has-dividers_bottom slds-has-block-links_space ">
+        <li class="slds-item slds-text-heading_medium ">
+        <h1  class="slds-item slds-p-bottom_small slds-m-top_medium slds-m-bottom_medium" onclick={highExpandHandler}>High({highLength})</h1>
+        </li>
+        <template if:true={highClick}>
+             <table class="slds-table slds-table_bordered fixed-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Subject</th>
+                        <th style="width: 40% height:20% ;">Assigned To</th>
+                        <th style="width: 30%;" class="slds-p-left_small">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={groupedTasks.High} for:item="hightk">
+                     <tr key={hightk.Id} >
+                        <td>{hightk.Subject}</td>
+                        <td>
+                            <lightning-combobox 
+                                name="Assignee"
+                                value={hightk.OwnerId}
+                                placeholder={hightk.Owner.Name}
+                                options={users}
+                                data-id={hightk.Id}
+                                onchange={handleChange} class="slds-p-bottom_small"></lightning-combobox>
+                        </td>
+                        <td class="slds-p-left_small">{hightk.Status} </td>    
+                     </tr>                 
+                    </template>
+                </tbody>
+             </table>
+        </template>
+  <li class="slds-item slds-text-heading_medium ">
+    <h1 class="slds-item slds-p-bottom_small slds-m-top_medium slds-m-bottom_medium"  onclick={medExpandHandler}>Medium({mediumLength})</h1>
+  </li>
+  <template if:true={medClick}>
+             <table class="slds-table slds-table_bordered fixed-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Subject</th>
+                        <th style="width: 40% height:20% ;">Assigned To</th>
+                        <th style="width: 30%;" class="slds-p-left_small">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={groupedTasks.Medium} for:item="medtk">
+                     <tr key={medtk.Id} >
+                        <td>{medtk.Subject}</td>
+                        <td>
+                            <lightning-combobox 
+                                name="Assignee"
+                                value={medtk.OwnerId}
+                                placeholder={medtk.Owner.Name}
+                                options={users}
+                                data-id={medtk.Id}
+                                onchange={handleChange} class="slds-p-bottom_small" ></lightning-combobox>
+                        </td>
+                        <td class="slds-p-left_small">{medtk.Status} </td>    
+                     </tr>                 
+                    </template>
+                </tbody>
+             </table>
+        </template>
+  <li class="slds-item slds-text-heading_medium ">
+   <h1 class="slds-item slds-p-bottom_small slds-m-top_medium slds-m-bottom_medium"  onclick={lowExpandHandler}>Low({lowLength})</h1>
+   </li>
+   <template if:true={lowClick}>
+             <table class="slds-table slds-table_bordered fixed-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Subject</th>
+                        <th style="width: 40% height:20% ;">Assigned To</th>
+                        <th style="width: 30%;" class="slds-p-left_small">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={groupedTasks.Low} for:item="lowtk">
+                     <tr key={lowtk.Id} >
+                        <td>{lowtk.Subject}</td>
+                        <td>
+                            <lightning-combobox 
+                                name="Assignee"
+                                value={lowtk.OwnerId}
+                                placeholder={lowtk.Owner.Name}
+                                options={users}
+                                data-id={lowtk.Id}
+                                onchange={handleChange} class="slds-p-bottom_small" ></lightning-combobox>
+                        </td>
+                        <td class="slds-p-left_small">{lowtk.Status} </td>    
+                     </tr>                 
+                    </template>
+                </tbody>
+             </table>
+        </template>
+    </ul>
+    </lightning-card>
+
+</template>
