@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="File Analysis Using LLM">
+    <div class="slds-p-around_medium lgc-bg">
+     <lightning-input type="text" label="Enter Instructions" value={promptInstructions} onchange={captureInstructions}
+      required 
+      field-level-help="Enter Instructions to summarise the uploading file"
+      placeholder="Enter prompt Instructions"
+      ></lightning-input>
+     <div class="slds-p-top_medium">
+     <lightning-button variant="brand" label="Clear " title="Primary action" onclick={handleClear} class="slds-m-left_x-small"></lightning-button>
+     </div>
+    </div>
+    <lightning-file-upload
+        label="Attach file to summarise"
+        name="fileUploader"
+        accept={acceptedFormats}
+        onuploadfinished={handleUploadFinished}
+    >
+    </lightning-file-upload>
+
+
+    
+    </lightning-card>
+    <template if:true={showData}>
+        <lightning-card title="Summarise/Analysed Data">
+        <div class="close-button">
+        <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close" title="Close" onclick={handleClose}></lightning-button-icon>
+        </div>
+        <p>{analysedData}</p>
+        </lightning-card>
+    </template>
+</template>

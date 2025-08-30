@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<masterLabel>File Analysis with Gemini via LWC</masterLabel>
+	<apiVersion>63.0</apiVersion>
+	<description>This approach allows you to: 
+Select any file locally stored in your system 
+Send the file along with user instructions or prompts to Gemini Return the AI-generated analysis to your Salesforce UI</description>
+	<isExposed>true</isExposed>
+	<targets>
+		<target>lightning__AppPage</target>
+		<target>lightning__HomePage</target>
+		<target>lightning__RecordPage</target>
+		<target>lightningCommunity__Default</target>
+		<target>lightningCommunity__Page</target>
+	</targets>
+</LightningComponentBundle>
