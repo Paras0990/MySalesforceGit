@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Email Drafts Composer">
+    <template if:true={loading}>
+    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <lightning-textarea name="input1" label="Enter promt to generate tailored emails" value={promptText} disabled={disableTextArea} onchange={handleInputChange}></lightning-textarea>
+    <div class="slds-m-top_large slds-grid slds-grid_align-center" >
+        <lightning-button class="slds-m-right_medium" label="Generate Email" variant="Brand" disabled={disableGenerateEmailButton} onclick={handleGenerateEmail}></lightning-button>
+         <lightning-button class=" slds-m-right_medium slds-m-left_medium " label="Save Draft" variant="Success" disabled={disableSaveDraftButton} onclick={handleSaveDraft}></lightning-button>
+          <lightning-button class="slds-m-left_medium " label="Send for Approval" variant="Destructive" disabled={disableApprovalButton} onclick={handleSendForApproval}></lightning-button>
+    </div>
+    </lightning-card>
+   
+    <template if:true={displayEmailDraft}>
+    <lightning-card title="Email Draft">
+        <pre>{generatedEmail}</pre>
+    </lightning-card>
+    </template>
+
+</template>

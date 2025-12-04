@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Email Drafts">
+        <template if:true={loadDatatable}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <lightning-datatable
+            key-field="id"
+            data={data}
+            columns={columns}
+            hide-checkbox-column
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </lightning-card>
+
+</template>
